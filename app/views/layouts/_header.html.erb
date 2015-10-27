@@ -12,8 +12,10 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown ">
-          <span class="glyphicon glyphicon-user" data-toggle="modal" data-target="#login-modal"></span>
-          Đăng nhập
+          <%= link_to signup_path do %>
+            <span class="glyphicon glyphicon-user" data-toggle="modal" data-target="#login-modal"></span>
+            Đăng nhập
+          <% end %>
         </li>
         <li class="dropdown">
           <span class="glyphicon glyphicon-pencil"></span>
