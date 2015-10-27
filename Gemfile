@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.3'
 gem 'bootstrap-sass'
 gem 'pry-rails'
+gem 'bcrypt',               '3.1.7'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.3.18'
 # Use SCSS for stylesheets
