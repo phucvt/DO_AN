@@ -11,17 +11,42 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle " data-toggle="dropdown" style="padding-right: 20px; padding-left: 20px;">
+          <%= gravatar_for current_user, :size => 20 %>
+          <%= current_user.name %> 
+          <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Tài khoản", current_user %></li>
+            <li><%= link_to "Cài đặt", '#' %></li>
+            <li class="divider"></li>
+            <li>
+              <%= link_to "Thoát", logout_path, method: "delete" %>
+            </li>
+          </ul>
+        </li>
+        <% else %>
         <li class="dropdown ">
-          <%= link_to signup_path do %>
-            <span class="glyphicon glyphicon-user" data-toggle="modal" data-target="#login-modal"></span>
-            Đăng nhập
+          <%= link_to login_path do %>
+          <span class="glyphicon glyphicon-user" data-toggle="modal" data-target="#login-modal"></span>
+          Đăng nhập
           <% end %>
         </li>
+        <% end %>
         <li class="dropdown">
+          <% if logged_in? %> 
+          <%= link_to '#'  do %>
           <span class="glyphicon glyphicon-pencil"></span>
           Đăng bài
+          <% end %>
+          <% else %>
+          <%= link_to  signup_path do %>
           <span class="glyphicon glyphicon-pencil"></span>
           Đăng ký
+          <% end %>
+          <% end %>
         </li>
       </ul>
     </div>
