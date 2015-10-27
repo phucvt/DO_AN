@@ -10,6 +10,101 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  */
+body {
+  padding-top: 70px;
+  padding-bottom: 50px;
+}
+
+footer {
+  margin-top: 30px;
+  border-top: 1px solid #e5e5e5;
+  padding-top: 10px;
+  background-color: #f8f8f8;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+#fb-share {
+  position: absolute;
+  right: 10px;
+  top: -45px;
+  background-color: #f8f8f8;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
+
+.gmnoprint{margin-left: 16%;}
+ #map-canvas {
+  height: 400px;
+  width :810px;
+  margin: 0px;
+  padding: 0px
+ }
+ #panel {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  margin-left: -180px;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+ }
+thead{font-weight: bold;}
+#err{background: red}
+#searchbox {
+  padding: 2px 5px;
+  width: 250px;
+  background:  #66CC66;
+  margin-left: 79%;
+
+}
+
+.post-id-image, .description-para {
+  border: 1px solid black;
+}
+
+.phucdine {
+  height: 115px;
+  height: 115px;
+  overflow: hidden;
+}
+
+#logo {
+  font-size: 35px;
+}
+
+#comment  {
+  margin-top: 5px;
+  width: 100%;
+  height: 180px;
+  border: solid #EEEEEE 1px;
+}
+
+#reviews{
+  margin-top: 35px;
+  width: 96%;
+  margin-left: 2%;
+  background: WhiteSmoke;
+  border: solid #EEEEEE 1px;
+}
+
+#botton {
+  margin-left: 5%
+}
+
+#textarea_review  {
+  margin-left: 2%;
+  width: 95%;
+  height: 100px;
+  border: solid #EEEEEE 1px;
+ }
+
+#image_thumb {
+  height: 300px;
+}
