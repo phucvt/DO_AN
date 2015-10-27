@@ -36,7 +36,10 @@ footer {
   border-radius: 5px;
 }
 
-
+.about {
+  border-radius: 5px;
+  background-color: #eee;
+}
 
 .gmnoprint{margin-left: 16%;}
  #map-canvas {
