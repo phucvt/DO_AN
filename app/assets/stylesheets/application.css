@@ -190,3 +190,34 @@ aside {
   width: auto;
   margin-left: 0;
 }
+
+span.picture {
+margin-top: 10px;
+input {
+border: 0;
+}
+}
+
+.gmnoprint{margin-left: 16%;}
+ #map-canvas {
+  height: 400px;
+  width :810px;
+  margin: 0px;
+  padding: 0px
+ }
+ #panel {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  margin-left: -180px;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+ }
+thead{font-weight: bold;}
+#err{background: red}
+.post-id-image, .description-para {
+  border: 1px solid black;
+}
+
