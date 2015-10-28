@@ -9,6 +9,7 @@ gem 'pry-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
+gem 'will_paginate',           '3.0.7'
 gem 'bcrypt'
 # Use mysql as the database for Active Record
 # Use SCSS for stylesheets
