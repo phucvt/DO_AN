@@ -44,10 +44,9 @@ class UsersController < ApplicationController
 
   def logged_in_user
     return if logged_in?
-      store_location
-      flash[:danger] = 'Vui lòng đăng nhập!'
-      redirect_to login_url
-    end
+    store_location
+    flash[:danger] = 'Vui lòng đăng nhập!'
+    redirect_to login_url
   end
 
   def correct_user

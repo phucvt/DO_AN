@@ -1,0 +1,54 @@
+<% provide(:title, "Post") %>
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 post-id-image">
+      <%= link_to gravatar_for(@post.user, size: 50), @post.user %>
+      <%= @post.user.name %>
+      <%= @post.user.phone %>
+    </div>
+    <div class="col-md-9 description-para">
+      <div class="col-md-12 col-lg-12 text-center">
+        <h3 class="panel-title"><%= @post.title %></h3>
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <%= image_tag @post.picture.url if @post.picture? %>
+        </div>
+        <div class="col-md-7">
+          <strong>Loại tin</strong>
+          <span><%= Category.find_by_id(@post.category_id).name %></span>
+          </br>
+          <strong>Khu vực</strong>
+          <span><%= Location.find_by_id(@post.location_id).location_name %></span>
+          </br>
+          <strong>Diện tích</strong>
+          <span><%= @post.area %></span>
+          </br>
+          <strong>Giá</strong>
+          <span><%= @post.price %>VND</span>
+          </br>
+          <strong>Mô tả</strong>
+          <span><%= @post.desc %></span>
+          </br>
+          <span class="timestamp">        
+          Thời gian đăng <%= time_ago_in_words(@post.created_at) %> trước.
+          </span>
+          </br>   
+          <i class="glyphicon glyphicon-triangle-bottom"></i>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <strong>Địa chỉ</strong>
+        <span><%=@post.address%></span> 
+        <div id="panel">
+          <input id="address" type="textbox" value="<%=@post.address%>">
+          <input type="button" value="Geocode" onclick="codeAddress()">
+        </div>
+        <div id="map-canvas">
+          <script type="text/javascript"> initialize(); </script>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

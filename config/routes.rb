@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  root 'static_pages#home'
+  
+  resources :locations
+  resources :categories
+  resources :posts
+  root 'posts#index'
   get 'signup'          => 'users#new'
   get 'about'           => 'static_pages#about'
   get 'login'           => 'sessions#new'

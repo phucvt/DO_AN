@@ -1,0 +1,3 @@
+# PostsHelper
+module PostsHelper
+end
