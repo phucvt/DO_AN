@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.search(params[:search], params[:min_price], params[:max_price]).paginate(:page => params[:page], :per_page => 12 )
+    @posts = Post.search(params[:search], params[:min_price], params[:max_price])
     @categories = Category.all
   end
 
@@ -14,6 +14,37 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
+    @users = @post.likes.all
+    like_checking = Like.find_by(user: current_user, post: @post)
+    if like_checking
+      if like_checking.like == true
+        @like_post = 1
+      else
+        @like_post = -1
+      end
+    else
+      @like_post = 0
+    end
+  end
+
+  def like
+    if logged_in?
+      @post = Post.find(params[:id])
+      my_like = Like.find_by(user: current_user, post: @post)
+      if !my_like
+        Like.create(like: params[:like], user: current_user, post: @post).save
+        redirect_to :back
+      else
+        if my_like[:like].to_s == params[:like]
+          redirect_to :back
+        else
+          my_like.toggle!(:like)
+          redirect_to :back
+        end
+      end
+    else
+      redirect_to :back
+    end
   end
 
   # GET /posts/new
@@ -32,7 +63,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to @post }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -46,7 +77,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to @post }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -60,7 +91,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
   end
