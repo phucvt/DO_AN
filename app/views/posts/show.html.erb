@@ -34,8 +34,28 @@
           <span class="timestamp">        
           Thời gian đăng <%= time_ago_in_words(@post.created_at) %> trước.
           </span>
-          </br>   
+          </br>
+          <%= @post.thumbs_up_total %>   
+          <% if @like_post == 1 %>
+          <%= link_to like_post_path(@post, like: true), class: "not-active", method: :post do %>    
+          <i class="glyphicon glyphicon-triangle-top"></i>
+          <% end %>
+          <% else %> 
+          <%= link_to like_post_path(@post, like: true), method: :post do %>
+          <i class="glyphicon glyphicon-triangle-top"></i>
+          <% end %>
+          <% end %>
+          &nbsp&nbsp&nbsp&nbsp 
+          <%= @post.thumbs_down_total %>
+          <% if @like_post == -1 %>
+          <%= link_to like_post_path(@post, like: false), class: "not-active", method: :post do %>    
           <i class="glyphicon glyphicon-triangle-bottom"></i>
+          <% end %>
+          <% else %> 
+          <%= link_to like_post_path(@post, like: false), method: :post do %>    
+          <i class="glyphicon glyphicon-triangle-bottom"></i> 
+          <% end %>
+          <% end %>
         </div>
       </div>
       <div class="col-md-12">
