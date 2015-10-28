@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'mysql2', '~> 0.3.18'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rubocop'
 gem 'rails', '4.2.3'
 gem 'bootstrap-sass'
 gem 'pry-rails'
