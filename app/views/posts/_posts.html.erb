@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <% 
+        # binding.pry
+        if @posts.empty? %>
+      <p>Not found</p>
+      <% else %>
+      <% @posts.each do |post| %>
+      <div class="col-sm-4 col-md-3 col-lg-3">
+        <div class="thumbnail" id="image_thumb">
+          <%= image_tag post.picture.url,size:'200x100' if post.picture? %>
+          <div class="caption phucdine">
+            <h4 class="pull-right"><%= post.price %>VND</h4>
+            <h4><%= link_to post.title, post %>
+            </h4>
+            <span class="timestamp">        
+            Posted <%= time_ago_in_words(post.created_at) %> ago.
+            </span>
+          </div>
+          <div class="ratings">
+            <p class="pull-right"><%= 5 %> Reviews</p>
+            <p>
+            <td>     
+              <i class="glyphicon glyphicon-triangle-top"></i> &nbsp; <%= 1 %>
+              <i class="glyphicon glyphicon-triangle-bottom"></i> &nbsp; <%= 0 %>
+            </td>
+            </p>
+          </div>
+        </div>
+      </div>
+      <% end %> 
+      <% end %>  
+    </div>
+  </div>
+</div>
+<div class="row">
+  </div>
+</div>
