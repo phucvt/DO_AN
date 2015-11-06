@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :locations
   resources :categories
   resources :posts do
+    resources :reviews
     get :show
     member do
       post 'like'

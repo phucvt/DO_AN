@@ -3,17 +3,25 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3 post-id-image">
-      <%= link_to gravatar_for(@post.user, size: 50), @post.user %>
-      <%= @post.user.name %>
-      <%= @post.user.phone %>
+      <%= link_to gravatar_for(@post.user, size: 150), @post.user %>
+      </br>
+      <strong><%= @post.user.name %></strong>
+      </br>
+      <strong>Liên hệ: </strong>
+      <span><%= @post.user.phone %></span>
     </div>
     <div class="col-md-9 description-para">
       <div class="col-md-12 col-lg-12 text-center">
         <h3 class="panel-title"><%= @post.title %></h3>
       </div>
       <div class="row">
+      <% default_image = 'noimage.jpg' %>
         <div class="col-md-5">
-          <%= image_tag @post.picture.url if @post.picture? %>
+          <% if @post.picture? %>
+            <%= image_tag @post.picture.url, size:'300x200' %>
+          <% else %>
+            <%= image_tag default_image, size:'300x200' %>
+          <% end %>
         </div>
         <div class="col-md-7">
           <strong>Loại tin</strong>
@@ -58,6 +66,18 @@
           <% end %>
         </div>
       </div>
+    <%= render 'reviews/review' %>
+      <div id="comment">
+    <%= form_for([@post, @post.reviews.build]) do |f| %>
+    <p>
+      <br>
+      <%= f.text_area :review, id: 'textarea_review'%>
+    </p>
+    <p>
+      <%= f.submit "Create review", id: "botton", class: "btn btn-success green" %>
+    </p>
+    <% end %>
+  </div>
       <div class="col-md-12">
         <strong>Địa chỉ</strong>
         <span><%=@post.address%></span> 

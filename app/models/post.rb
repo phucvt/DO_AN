@@ -2,6 +2,7 @@
 class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
+  has_many :reviews, dependent: :destroy
   belongs_to :location
   has_many :likes
   default_scope -> { order(created_at: :desc) }
@@ -20,12 +21,24 @@ class Post < ActiveRecord::Base
 
   def self.search(search, min_price, max_price)
     @posts = Post.all
-    search = '' if search.nil?
-    min_price = 0 if min_price.nil?
-    max_price = 1_000_000_000_000 if max_price.nil?
-    @posts = @posts.where(['title LIKE ?', "%#{search}%"])
-    @posts = @posts.where(['price <= ?', max_price])
-    @posts = @posts.where(['price >= ?', min_price])
+    # search = '' if search.nil?
+    # min_price = 0 if min_price.nil?
+    # max_price = 1_000_000_000_000 if max_price.nil?
+    if search == nil
+      @posts = @posts
+    else
+      @posts = @posts.where(['title LIKE ?', "%#{search}%"])
+    end
+    if min_price == nil
+      @posts = @posts
+    else
+      @posts = @posts.where(['price >= ?', min_price])
+    end
+    if max_price == nil
+      @posts = @posts
+    else
+      @posts = @posts.where(['price <= ?', max_price])
+    end
   end
 
   def thumbs_up_total
