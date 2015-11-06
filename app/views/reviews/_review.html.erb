@@ -1,0 +1,8 @@
+<div id="reviews">
+  <% reviews = @post.reviews %>
+    <% reviews.each do |review| %>
+    <strong><%= User.find_by_id(review.user_id).name %>: </strong>
+      <%= review.review %>
+    <br>
+  <% end %>
+</div>

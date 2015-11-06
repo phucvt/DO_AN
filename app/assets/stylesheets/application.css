@@ -84,7 +84,8 @@ thead{font-weight: bold;}
 
 #comment  {
   margin-top: 5px;
-  width: 100%;
+  margin-left: 14px;
+  width: 96%;
   height: 180px;
   border: solid #EEEEEE 1px;
 }
@@ -98,7 +99,8 @@ thead{font-weight: bold;}
 }
 
 #botton {
-  margin-left: 5%
+  margin-left: 2%;
+  width: 117px;
 }
 
 #textarea_review  {
