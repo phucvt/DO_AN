@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  get 'home/index'
+
   resources :locations
   resources :categories
   resources :posts do
