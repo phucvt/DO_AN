@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get 'like'
     end
   end
+  post'/' => 'posts#search_post', as: :search_post
   root 'posts#index'
   get 'signup'          => 'users#new'
   get 'about'           => 'static_pages#about'

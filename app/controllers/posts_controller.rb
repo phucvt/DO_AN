@@ -6,8 +6,14 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    @posts = Post.all.paginate(:page => params[:page], :per_page => 12 )
+    @categories = Category.all
+  end
+  
+  def search_post
     @posts = Post.search(params[:search], params[:min_price], params[:max_price]).paginate(:page => params[:page], :per_page => 12 )
     @categories = Category.all
+    render 'index'
   end
 
   # GET /posts/1

@@ -1,12 +1,12 @@
-<%= form_for posts_path, :method => 'get' do |f| %>
+ <%= form_for posts_path, url: { controller: :posts, action: :search_post },:method => 'post' do |f| %>
   <div class="col-md-2">    
     <%= text_field_tag :search, params[:search], placeholder: "enter anything", class: 'form-control'  %>
   </div>
   <div class="col-md-2">
-    <%= text_field_tag :min_price, params[:min_price], placeholder: "min price", class: 'form-control'  %>
+    <%= number_field_tag :min_price, params[:min_price], placeholder: "min price", class: 'form-control'  %>
   </div>
   <div class="col-md-2">
-    <%= text_field_tag :max_price, params[:max_price], placeholder: "max price", class: 'form-control'  %>
+    <%= number_field_tag :max_price, params[:max_price], placeholder: "max price", class: 'form-control'  %>
   </div>
   <div class="col-md-2"> 
     <%= submit_tag "Tìm" , class: "btn btn-danger" %>
