@@ -1,0 +1,20 @@
+<% provide(:title, "Admin") %>
+
+<div class="row">
+  <div class="col col-md-2 navi">
+    <ul class="nav nav-pills nav-stacked">
+      <li><%= link_to 'Bài đăng', list_post_path %></li>
+      <li><%= link_to 'Tài khoản', users_path %></li>
+    </ul>
+  </div>
+  <div class="col col-md-10">
+    <h1 style="text-align: center">Thông tin quản trị viên</h1>
+    <%= gravatar_for(current_user, size: 100) %>
+    <span>Tên:</span>
+    <strong><%= current_user.name %></strong>
+    <br>
+    <span>Email:</span>
+    <strong><%= current_user.email %></strong>
+  </div>
+</div>
+

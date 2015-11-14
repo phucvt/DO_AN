@@ -1,12 +1,18 @@
- <%= form_for posts_path, url: { controller: :posts, action: :search_post },:method => 'post' do |f| %>
+ <%= form_for :search_post, url: { controller: :posts, action: :search_post },:method => 'post' do |f| %>
+  <div class="col-md-2">
+    <%= f.collection_select(:category_id, @categories, :id, :name, :include_blank => "Tất cả") %>
+  </div>
+  <div class="col-md-2 ">
+    <%= f.collection_select(:location_id, @locations, :id, :location_name, :include_blank => "Tất cả") %>
+  </div>
   <div class="col-md-2">    
-    <%= text_field_tag :search, params[:search], placeholder: "enter anything", class: 'form-control'  %>
+    <%= text_field_tag :search, params[:search], placeholder: "Tìm kiếm", class: 'form-control'  %>
   </div>
   <div class="col-md-2">
-    <%= number_field_tag :min_price, params[:min_price], placeholder: "min price", class: 'form-control'  %>
+    <%= number_field_tag :min_price, params[:min_price], placeholder: "Giá thấp nhất", class: 'form-control'  %>
   </div>
   <div class="col-md-2">
-    <%= number_field_tag :max_price, params[:max_price], placeholder: "max price", class: 'form-control'  %>
+    <%= number_field_tag :max_price, params[:max_price], placeholder: "Giá cao nhất", class: 'form-control'  %>
   </div>
   <div class="col-md-2"> 
     <%= submit_tag "Tìm" , class: "btn btn-danger" %>
