@@ -19,26 +19,14 @@ class Post < ActiveRecord::Base
     Category.all
   end
 
-  def self.search(search, min_price, max_price)
+  def Post.search(category_id="", location_id="",search="", min_price="", max_price="")
     @posts = Post.all
-    # search = '' if search.nil?
-    # min_price = 0 if min_price.nil?
-    # max_price = 1_000_000_000_000 if max_price.nil?
-    if search == nil
-      @posts = @posts
-    else
-      @posts = @posts.where(['title LIKE ?', "%#{search}%"])
-    end
-    if min_price == nil
-      @posts = @posts
-    else
-      @posts = @posts.where(['price >= ?', min_price])
-    end
-    if max_price == nil
-      @posts = @posts
-    else
-      @posts = @posts.where(['price <= ?', max_price])
-    end
+    @posts = @posts.where(['category_id = ?', category_id]) if category_id!=""
+    @posts = @posts.where(['location_id = ?', location_id]) if location_id!=""
+    @posts = @posts.where(['title LIKE ?', "%#{search}%"]) if search != ""
+    @posts = @posts.where(['price >= ?', min_price]) if min_price != ""
+    @posts = @posts.where(['price <= ?', max_price]) if max_price != ""
+    return @posts
   end
 
   def thumbs_up_total

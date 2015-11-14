@@ -6,8 +6,18 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.search(params[:search], params[:min_price], params[:max_price]).paginate(:page => params[:page], :per_page => 12 )
+    @posts = Post.all.paginate(:page => params[:page], :per_page => 12 )
     @categories = Category.all
+  end
+
+  def list_post
+    @posts = Post.all.paginate(:page => params[:page], :per_page => 13 )
+  end
+  
+  def search_post
+    @posts = Post.search(params[:search_post][:category_id], params[:search_post][:location_id], params[:search], params[:min_price], params[:max_price]).paginate(:page => params[:page], :per_page => 12 )
+    @categories = Category.all
+    render 'index'
   end
 
   # GET /posts/1
@@ -90,10 +100,11 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url }
-      format.json { head :no_content }
-    end
+    # respond_to do |format|
+    #   format.html { redirect_to posts_url }
+    #   format.json { head :no_content }
+    # end
+    redirect_to :back
   end
 
   private

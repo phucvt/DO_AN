@@ -1,20 +1,20 @@
-<% provide(:title, "Edit user") %>
+<% provide(:title, "Cập nhật thông tin") %>
 <h1 style="text-align: center">Cập nhật thông tin</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
     <%= render 'shared/error_message' %>
-    <%= f.label :name %>
+    <strong>Tên tài khoản</strong>
     <%= f.text_field :name, class: 'form-control' %>
     <%= f.label :email %>
     <%= f.text_field :phone, class: 'form-control' %>
-    <%= f.label :phone %>
+    <strong>Điện thoại</strong>
     <%= f.email_field :email, class: 'form-control' %>
-    <%= f.label :password %>
+    <strong>Mật khẩu</strong>
     <%= f.password_field :password, class: 'form-control' %>
-    <%= f.label :password_confirmation, "Confirmation" %>
+    <strong>Xác nhận mật khẩu</strong>
     <%= f.password_field :password_confirmation, class: 'form-control' %>
-    <%= f.submit "Thay đổi", class: "btn btn-primary" %>
+    <%= f.submit "Thay đổi", class: "btn btn-primary btncreate" %>
     <% end %>
     <div class="gravatar_edit">
       <%= gravatar_for @user %>

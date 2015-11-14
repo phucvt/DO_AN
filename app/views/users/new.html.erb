@@ -1,20 +1,20 @@
-<% provide(:title, 'Sign up') %>
-<h1 style="text-align: center;">Sign up</h1>
+<% provide(:title, 'Đăng ký') %>
+<h1 style="text-align: center;">Đăng ký</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
     <%= render 'shared/error_message' %>
-    <%= f.label :name %>
+    <strong>Tên tài khoản</strong>
     <%= f.text_field :name, class: 'form-control' %>
     <%= f.label :email %>
     <%= f.email_field :email, class: 'form-control' %>
-    <%= f.label :phone %>
+    <strong>Điện thoại</strong>
     <%= f.text_field :phone, class: 'form-control' %>
-    <%= f.label :password %>
+    <strong>Mật khẩu</strong>
     <%= f.password_field :password, class: 'form-control' %>
-    <%= f.label :password_confirmation, "Confirmation" %>
+    <strong>Xác nhận mật khẩu</strong>
     <%= f.password_field :password_confirmation, class: 'form-control' %>
-    <%= f.submit "Create my account", class: "btn btn-primary btncreate" %>
+    <%= f.submit "Tạo tài khoản", class: "btn btn-primary btncreate" %>
     <% end %>
   </div>
 </div>

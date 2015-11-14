@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="row">
       <% if @posts.empty? %>
-      <p>Not found</p>
+      <p>Không tìm thấy</p>
       <% else %>
       <% @posts.each do |post| %>
       <div class="col-sm-4 col-md-3 col-lg-3">
@@ -18,11 +18,11 @@
             <h4><%= link_to post.title, post %>
             </h4>
             <span class="timestamp">        
-            Posted <%= time_ago_in_words(post.created_at) %> ago.
+            Đăng <%= time_ago_in_words(post.created_at) %> trước.
             </span>
           </div>
           <div class="ratings">
-            <p class="pull-right"><%= post.reviews.count %> Reviews</p>
+            <p class="pull-right"><%= post.reviews.count %> Lời bình</p>
             <p>
             <td>     
               <i class="glyphicon glyphicon-triangle-top"></i> &nbsp; <%= post.thumbs_up_total %>

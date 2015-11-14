@@ -1,42 +1,43 @@
-<% provide(:title, "Post") %>
+<% provide(:title, "Bài đăng") %>
 <p id="notice"><%= notice %></p>
 <div class="container">
   <div class="row">
-    <div class="col-md-3 post-id-image">
+    <div class="col-md-2 post-id-image">
       <%= link_to gravatar_for(@post.user, size: 150), @post.user %>
       </br>
+      <p>Tên tài khoản:</p>
       <strong><%= @post.user.name %></strong>
       </br>
-      <strong>Liên hệ: </strong>
-      <span><%= @post.user.phone %></span>
+      <p>Điện thoại liên hệ:</p>
+      <strong><%= @post.user.phone %></strong>
     </div>
     <div class="col-md-9 description-para">
       <div class="col-md-12 col-lg-12 text-center">
-        <h3 class="panel-title"><%= @post.title %></h3>
+        <h2><%= @post.title %></h2>
       </div>
       <div class="row">
-      <% default_image = 'noimage.jpg' %>
+        <% default_image = 'noimage.jpg' %>
         <div class="col-md-5">
           <% if @post.picture? %>
-            <%= image_tag @post.picture.url, size:'300x200' %>
+          <%= image_tag @post.picture.url, size:'300x200' %>
           <% else %>
-            <%= image_tag default_image, size:'300x200' %>
+          <%= image_tag default_image, size:'300x200' %>
           <% end %>
         </div>
         <div class="col-md-7">
-          <strong>Loại tin</strong>
+          <strong>Loại tin: </strong>
           <span><%= Category.find_by_id(@post.category_id).name %></span>
           </br>
-          <strong>Khu vực</strong>
+          <strong>Khu vực: </strong>
           <span><%= Location.find_by_id(@post.location_id).location_name %></span>
           </br>
-          <strong>Diện tích</strong>
-          <span><%= @post.area %></span>
+          <strong>Diện tích: </strong>
+          <span><%= @post.area %> m2</span>
           </br>
-          <strong>Giá</strong>
-          <span><%= @post.price %>VND</span>
+          <strong>Giá: </strong>
+          <span><%= @post.price %> VND</span>
           </br>
-          <strong>Mô tả</strong>
+          <strong>Mô tả: </strong>
           <span><%= @post.desc %></span>
           </br>
           <span class="timestamp">        
@@ -64,21 +65,26 @@
           <i class="glyphicon glyphicon-triangle-bottom"></i> 
           <% end %>
           <% end %>
+          <br>
+          <% if current_user == @post.user %>
+          <%= link_to 'Sửa bài đăng', edit_post_path(@post) %>
+          <% end %>
         </div>
       </div>
-    <%= render 'reviews/review' %>
+      <%= render 'reviews/review' %>
       <div id="comment">
-    <%= form_for([@post, @post.reviews.build]) do |f| %>
-    <p>
-      <br>
-      <%= f.text_area :review, id: 'textarea_review'%>
-    </p>
-    <p>
-      <%= f.submit "Create review", id: "botton", class: "btn btn-success green" %>
-    </p>
-    <% end %>
-  </div>
+        <%= form_for([@post, @post.reviews.build]) do |f| %>
+        <p style="height: 110px;">
+          <br>
+          <%= f.text_area :review, id: 'textarea_review'%>
+        </p>
+        <p>
+          <%= f.submit "Create review", id: "botton", class: "btn btn-success green" %>
+        </p>
+        <% end %>
+      </div>
       <div class="col-md-12">
+      <br>
         <strong>Địa chỉ</strong>
         <span><%=@post.address%></span> 
         <div id="panel">

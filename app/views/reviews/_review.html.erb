@@ -1,8 +1,29 @@
-<div id="reviews">
+<!-- <div id="reviews">
   <% reviews = @post.reviews %>
     <% reviews.each do |review| %>
     <strong><%= User.find_by_id(review.user_id).name %>: </strong>
       <%= review.review %>
     <br>
+  <% end %>
+</div> -->
+<div class="row">
+  <% reviews = @post.reviews %>
+  <% reviews.each do |review| %>
+  <div class="col-md-1">
+    <div class="thumbnail1">
+      <%= link_to gravatar_for(review.user, size: 50), review.user %>
+    </div>
+  </div>
+  <div class="col-md-11">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <strong><%= User.find_by_id(review.user_id).name %></strong>
+        <span class="text-muted">bình luận <%= time_ago_in_words(review.created_at) %> trước.</span>
+      </div>
+      <div class="panel-body">
+        <%= review.review %>
+      </div>
+    </div>
+  </div>
   <% end %>
 </div>
