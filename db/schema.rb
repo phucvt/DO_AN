@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105133008) do
+ActiveRecord::Schema.define(version: 20151125173240) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -51,11 +51,12 @@ ActiveRecord::Schema.define(version: 20151105133008) do
     t.string   "desc",        limit: 255
     t.integer  "price",       limit: 4
     t.integer  "user_id",     limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.string   "picture",     limit: 255
     t.integer  "category_id", limit: 4
     t.string   "location_id", limit: 255
+    t.boolean  "approve",                 default: false
   end
 
   add_index "posts", ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at", using: :btree
