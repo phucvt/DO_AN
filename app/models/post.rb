@@ -15,6 +15,12 @@ class Post < ActiveRecord::Base
   validates :desc, presence: true, length: { maximum: 1000 }
   validate :picture_size
 
+  scope :approved, -> {
+    where(:approve => true )
+  }
+  scope :pending, -> {
+    where(:approve => false )
+  }
   def self.list_categories
     Category.all
   end
@@ -27,6 +33,9 @@ class Post < ActiveRecord::Base
     @posts = @posts.where(['price >= ?', min_price]) if min_price != ""
     @posts = @posts.where(['price <= ?', max_price]) if max_price != ""
     return @posts
+  end
+
+  def Post.covertpending
   end
 
   def thumbs_up_total
