@@ -17,7 +17,7 @@
         <li>
           <div class="row">
             <div class="col-md-5">
-              <%= post.title %>
+              <%= link_to post.title, post %>
             </div>
             <div class="col-md-5">
               <span class="timestamp">        
@@ -26,7 +26,7 @@
             </div>
             <div class="col-md-2">
                 <% if post.approve == false %>
-                  <%= link_to "Pending", :controller => :posts, :action => :covertpending_post %>
+                  <%= link_to "Pending", approve_path(post_id:post) %>
                 <% else %>
                   <span>Approved</span>
                 <% end %>

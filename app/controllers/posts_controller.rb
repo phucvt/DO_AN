@@ -14,12 +14,11 @@ class PostsController < ApplicationController
     @posts = Post.all.paginate(:page => params[:page], :per_page => 13 )
   end
   
-  def covertpending_post
-    @posts = Post.pending
-    @posts.each do |post|
-      post.approve = true
-      post.save
-    end  
+  def approve
+    post = Post.find(params[:post_id])
+    post.approve = true
+    post.save
+    redirect_to :back
   end
 
   def search_post

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'home/index'
+  get 'list_post/appr'=>'posts#approve',as: :approve
   get 'list_post' => 'posts#list_post'
   resources :locations
   resources :categories
