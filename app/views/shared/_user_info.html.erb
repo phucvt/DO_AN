@@ -1,8 +1,29 @@
-<%= link_to gravatar_for(current_user, size: 150), current_user %>
-</br>
-<p>Tên tài khoản:</p>
-<strong><%= current_user.name %></strong>
-<p>Điện thoại liên hệ:</p>
-<strong><%= current_user.phone %></strong>
-<br><br>
-<span><%= pluralize(current_user.posts.count, "bài đăng") %></span>
+<div class="profile-sidebar">
+  <div class="profile-userpic">
+    <%= gravatar_for @user %>
+  </div>
+  <div class="profile-usertitle">
+    <div class="profile-usertitle-name">
+      <%= @user.name %>
+    </div>
+  </div>
+  <div class="profile-usermenu">
+    <ul class="nav">
+      <li class="active">
+        <a>
+        <i class="glyphicon glyphicon-list-alt"></i>
+        Articles List </a>
+      </li>
+      <li>
+        <a href="/users/<%= @user.id %>/edit">
+        <i class="glyphicon glyphicon-user"></i>
+        Account Settings </a>
+      </li>
+      <li>
+        <a href="/users/<%= @user.id %>/messages">
+        <i class="glyphicon glyphicon-envelope"></i>
+        Messages </a>
+      </li>
+    </ul>
+  </div>
+</div>

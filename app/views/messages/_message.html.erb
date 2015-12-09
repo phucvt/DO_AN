@@ -1,0 +1,31 @@
+<div class="row">
+  <tr>
+    <td>
+      <% if message.status == false %>
+      <%= image_tag 'new-message.png', alt: "Unread message" %>
+      <% else %>
+      <%= image_tag 'opened-message.png', alt: 'Already read' %>
+      <% end %>
+    </td>
+    <td>
+      <% if message.sender_id == current_user.id %>
+      Me
+      <% else %>
+      <%= User.find(message.sender_id)[:name] %>
+      <% end %>
+    </td>
+    <td>
+      <% if message.receiver_id == current_user.id %>
+      Me
+      <% else %>
+      <%= User.find(message.receiver_id)[:name] %>
+      <% end %>
+    </td>
+    <td><%= link_to message.title, user_message_path(current_user, message) %></td>
+    <td><%= time_ago_in_words(message.created_at) %></td>
+    <td><%= link_to "Detail", user_message_path(current_user, message) %></td>
+    <td><%= link_to 'Delete', user_message_path(current_user, message),
+      method: :delete,
+      data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+</div>

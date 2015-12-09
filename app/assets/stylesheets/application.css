@@ -280,3 +280,14 @@ thead{font-weight: bold;}
   border-right-color:#ddd;
   border-width:8px;
 }
+.profile-userpic {
+  margin-right: 60px;
+  margin-left: 40px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.profile-usertitle {
+  margin-right: 5px;
+  margin-left: 48px;
+  font-size: 30px;
+}

@@ -31,6 +31,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
+    @user = @post.user
     @users = @post.likes.all
     like_checking = Like.find_by(user: current_user, post: @post)
     if like_checking

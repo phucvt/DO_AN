@@ -1,0 +1,29 @@
+<% provide(:title, "All places created by "+ @user.name) %>
+<div class="container">
+  <div class="row profile">
+    <div class="col-md-3">
+      <%= render '/shared/user_info' %>
+    </div>
+    <div class="col-md-9">
+      <div class="profile-content">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <% if current_user?(@user) %>
+            <%= link_to "Create new place", new_post_path, class: 'btn btn-primary' %>
+            <% end %>
+          </div>
+        </div>
+        <% if @posts.any? %>
+        <div class="row">
+          xvxzgfds
+        </div>
+        <div class="box-paginate">
+          <%= will_paginate @posts %>
+        </div>
+        <% else %>
+        <h3>No place post.</h3>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

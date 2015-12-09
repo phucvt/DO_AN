@@ -13,6 +13,14 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   validates :phone, numericality: true, length: { in: 10..11 }
+  # has_many :active_messages, class_name: "Message",
+  #                           foreign_key: "sender_id",
+  #                           dependent: :destroy
+  # has_many :passive_messages, class_name: "Message",
+  #                           foreign_key: "receiver_id",
+  #                           dependent: :destroy
+  # has_many :sending, through: :active_messages, source: :receiver
+  has_many :messages, dependent: :destroy
   class << self
     # Returns the hash digest of the given string.
     def digest(string)

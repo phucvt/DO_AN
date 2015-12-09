@@ -1,0 +1,41 @@
+<% provide(:title, @user.name) %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 post-id-image">
+      <%= render 'shared/user_info' %>
+    </div>
+    <div class="col-md-9 description-para">
+      <div class="profile-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="profile-userbuttons">
+          <h3>All messages</h3>
+        </div>
+      </div>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Sender</th>
+          <th>Receiver</th>
+          <th>Title</th>
+          <th>Time</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+      <% if @messages.any? %>
+      <div class="row">
+        <%= render @messages %>
+      </div>
+      <div class="box-paginate">
+        <%= will_paginate @messages %>
+      </div>
+      <% else %>
+      <h3>No Message.</h3>
+      <% end %>
+    </table>
+  </div>
+    </div>
+  </div>
+</div>
