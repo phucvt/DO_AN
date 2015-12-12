@@ -10,19 +10,19 @@
   <div class="profile-usermenu">
     <ul class="nav">
       <li class="active">
-        <a>
+        <a href="/users/<%= @user.id %>/posts">
         <i class="glyphicon glyphicon-list-alt"></i>
-        Articles List </a>
+        Bài đăng </a>
       </li>
       <li>
         <a href="/users/<%= @user.id %>/edit">
         <i class="glyphicon glyphicon-user"></i>
-        Account Settings </a>
+        Thiết lập tài khoản </a>
       </li>
       <li>
         <a href="/users/<%= @user.id %>/messages">
         <i class="glyphicon glyphicon-envelope"></i>
-        Messages </a>
+        Tin nhắn </a>
       </li>
     </ul>
   </div>

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'list_post/appr'=>'posts#approve',as: :approve
   get 'list_post' => 'posts#list_post'
+  get 'users/:user_id/posts' => 'posts#postofuser'
   resources :locations
   resources :categories
   resources :posts do
@@ -25,5 +26,6 @@ Rails.application.routes.draw do
   delete 'logout'       => 'sessions#destroy'
   resources :users do
     resources :messages, only: [:index, :create, :show, :destroy]
+    resources :posts
   end
 end

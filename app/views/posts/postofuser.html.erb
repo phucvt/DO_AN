@@ -1,0 +1,43 @@
+<% provide(:title, @user.name) %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 post-id-image">
+      <%= render 'shared/user_info' %>
+    </div>
+    <div class="col-md-9 description-para">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="profile-userbuttons">
+            <h3>Danh sách bài đăng</h3>
+          </div>
+        </div>
+      </div>
+      <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Tiêu đề</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+        <% if @posts.any? %>
+        <% @posts.each do |post| %>
+        <div class="row">
+          <tr>
+            <td><%= link_to post.title, post %></td>
+            
+            <td>
+              <% if post.approve == false %>
+                <h6>Đang chờ phê duyệt</h6>
+              <% else %>
+                <h6>Đã phê duyệt</h6>
+              <% end %>
+            </td>
+          </tr>
+        </div>
+          <% end %>
+        <% else %>
+          <h3>Không có bài đăng</h3>
+        <% end %>
+    </div>
+  </div>
+</div>

@@ -10,6 +10,11 @@ class PostsController < ApplicationController
     @categories = Category.all
   end
 
+  def postofuser
+    @user = User.find(params[:user_id])
+    @posts = @user.posts
+  end
+
   def list_post
     @posts = Post.all.paginate(:page => params[:page], :per_page => 13 )
   end
