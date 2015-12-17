@@ -1,8 +1,10 @@
 <% provide(:title, "Home") %>
 <%= render 'layouts/navigation' %>  
 <div class="container">
-  <div class="row search">
-    <%= render  'search' %>
+  <div class="row" style="width: calc(100% - 28px);margin: 20px auto;float: none;">
+    <div class="row jumbotron" style="padding: 20px; margin-bottom:5px">
+      <%= render  'search' %>
+    </div>
   </div>
   <div id="posts">
     <%= render 'posts' %>

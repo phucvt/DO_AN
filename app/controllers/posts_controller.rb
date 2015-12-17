@@ -72,7 +72,8 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @user = current_user
+    @post = @user.posts.new
   end
 
   # GET /posts/1/edit

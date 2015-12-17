@@ -5,21 +5,17 @@
     <div class="col-md-2 post-id-image">
       <div class="profile-sidebar">
         <div class="profile-userpic">
-          <%= gravatar_for @user %>
+          <%= gravatar_for @user, :size => 180 %>
         </div>
         <div class="profile-usertitle">
           <div class="profile-usertitle-name">
             <%= @user.name %>
           </div>
         </div>
-        <div class="profile-usermenu">
-          <ul class="nav">
-            <li>      
+        <div class="profile-usermenu">    
               <i class="glyphicon glyphicon-phone-alt"></i>
-              Phone number:
-            </li>
-            <li style="margin-left:24px;"><%= @user.phone %></li>
-          </ul>
+              Phone number: <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<%= @user.phone %>
         </div>
         <% if @user.name != current_user.name %>
         <div class="profile-userbuttons">
@@ -77,11 +73,10 @@
           </div>
         </div>
         <% else %>
-          <li>
-          <a href="/users/<%= @user.id %>/messages">
+        <div style=" margin: 10px 0 20px">
           <i class="glyphicon glyphicon-envelope"></i>
-          Tin nhắn </a>
-        </li>
+          <a href="/users/<%= @user.id %>/messages" style="color:black;">Tin nhắn</a>
+        </div>
         <% end %>
       </div>
     </div>
@@ -89,7 +84,7 @@
       <div class="col-md-12 col-lg-12 text-center">
         <h2><%= @post.title %></h2>
       </div>
-      <div class="row">
+      <div class="row" style="padding-bottom: 20px; margin-bottom: 20px">
         <% default_image = 'noimage.jpg' %>
         <div class="col-md-5">
           <% if @post.picture? %>

@@ -19,27 +19,22 @@
             <div class="col-md-5">
               <%= link_to post.title, post %>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
               <span class="timestamp">        
                 Đăng <%= time_ago_in_words(post.created_at) %> trước.
               </span>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <% if post.approve == false %>
                   <%= link_to "Pending", approve_path(post_id:post) %>
                 <% else %>
                   <span>Approved</span>
                 <% end %>
-
+                &nbsp;&nbsp;&nbsp;&nbsp;
                 <%= link_to new_post_path do %>
-                <span class='glyphicon glyphicon-plus'></span>
-                <% end %>
-                <%= link_to edit_post_path(post) do %>
-                <span class='glyphicon glyphicon-pencil'></span>
-                <% end %>
-                <%= link_to post_path(post), method: :delete, data: { confirm: 'Bạn có muốn xóa?'} do %>
-                <span class='glyphicon glyphicon-remove'></span>
-              <% end %>
+                <span class='glyphicon glyphicon-plus'></span><% end %>&nbsp;&nbsp;&nbsp;&nbsp;
+                <%= link_to edit_post_path(post) do %><span class='glyphicon glyphicon-pencil'></span><% end %>&nbsp;&nbsp;&nbsp;&nbsp;
+                <%= link_to post_path(post), method: :delete, data: { confirm: 'Bạn có muốn xóa?'} do %><span class='glyphicon glyphicon-remove'></span><% end %>
             </div>
           </div> 
         </li>

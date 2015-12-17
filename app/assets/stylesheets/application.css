@@ -20,6 +20,10 @@ body {
   padding-top: 70px;
   padding-bottom: 50px;
 }
+select {
+    height: 34px;
+    border-radius: 3px;
+}
 
 footer {
   margin-top: 30px;
@@ -89,6 +93,7 @@ thead{font-weight: bold;}
 
 #logo {
   font-size: 35px;
+  color: black;
 }
 
 #comment  {
@@ -180,7 +185,6 @@ aside {
 }
 
 .gravatar {
-  float: left;
   margin-right: 10px;
 }
 
@@ -281,13 +285,20 @@ thead{font-weight: bold;}
   border-width:8px;
 }
 .profile-userpic {
-  margin-right: 60px;
-  margin-left: 40px;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  width: 100%;
+  margin-top: 20px;
+}
+.profile-userpic img{
+  max-width: 100%;
 }
 .profile-usertitle {
-  margin-right: 5px;
-  margin-left: 48px;
+  text-align: center;
+  text-transform: uppercase;
   font-size: 30px;
+}
+.navbar-default {
+    background-color: #68C0FF !important;
+}
+#navbar a{
+    color: black;
 }
