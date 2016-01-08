@@ -9,23 +9,23 @@
     </td>
     <td>
       <% if message.sender_id == current_user.id %>
-      Me
+      Tôi
       <% else %>
       <%= User.find(message.sender_id)[:name] %>
       <% end %>
     </td>
     <td>
       <% if message.receiver_id == current_user.id %>
-      Me
+      Tôi
       <% else %>
       <%= User.find(message.receiver_id)[:name] %>
       <% end %>
     </td>
     <td><%= link_to message.title, user_message_path(current_user, message) %></td>
-    <td><%= time_ago_in_words(message.created_at) %></td>
-    <td><%= link_to "Detail", user_message_path(current_user, message) %></td>
-    <td><%= link_to 'Delete', user_message_path(current_user, message),
+    <td><%= message.created_at.strftime("%m/%d/%Y %I:%M ") %></td>
+    <td><%= link_to "Chi tiết", user_message_path(current_user, message) %></td>
+    <td><%= link_to 'Xóa', user_message_path(current_user, message),
       method: :delete,
-      data: { confirm: 'Are you sure?' } %></td>
+      data: { confirm: 'Bạn có chắc chắn muốn xóa?' } %></td>
   </tr>
 </div>

@@ -14,19 +14,20 @@
         </div>
         <div class="profile-usermenu">    
               <i class="glyphicon glyphicon-phone-alt"></i>
-              Phone number: <br>
+              Điện thoại liên hệ: <br>
               &nbsp;&nbsp;&nbsp;&nbsp;<%= @user.phone %>
         </div>
+        <% if logged_in? %>
         <% if @user.name != current_user.name %>
         <div class="profile-userbuttons">
-          <button type="button" data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary btn-sm">Leave Message</button>
+          <button type="button" data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary btn-sm">Để lại tin nhắn</button>
         </div>
         <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h3 class="modal-title text-center" id="lineModalLabel">Send private message</h3>
+                <h3 class="modal-title text-center" id="lineModalLabel">Để lại tin nhắn</h3>
                 <% if @all_error_messages != nil %>
                 <div class="errors-form">
                   <div class="form-group">
@@ -46,24 +47,24 @@
               <div class="modal-body">
                 <!-- content goes here -->
                 <div class="form-group">
-                  <%= m.label :title, class: "control-label" %>
-                  <%= m.text_field :title, class: "form-control", placeholder: "Title" %>
+                  <strong>Tiêu đề</strong>
+                  <%= m.text_field :title, class: "form-control", placeholder: "Tiêu đề" %>
                 </div>
                 <div class="form-group">
-                  <%= m.label :content, class: "control-label" %>
-                  <%= m.text_area :content, class: "form-control", placeholder: "Content" %>
+                  <strong>Nội dung</strong>
+                  <%= m.text_area :content, class: "form-control", placeholder: "Tin nhắn" %>
                 </div>
               </div>
               <div class="modal-footer">
                 <div class="btn-group btn-group-justified" role="group" aria-label="group button">
                   <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Đóng </button>
                   </div>
                   <div class="btn-group btn-delete hidden" role="group">
-                    <button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
+                    <button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Xóa</button>
                   </div>
                   <div class="btn-group" role="group">
-                    <%= m.submit "Send", class: "btn btn-default btn-hover-green" %>
+                    <%= m.submit "Gửi", class: "btn btn-default btn-hover-green" %>
                   </div>
                 </div>
               </div>
@@ -77,6 +78,7 @@
           <i class="glyphicon glyphicon-envelope"></i>
           <a href="/users/<%= @user.id %>/messages" style="color:black;">Tin nhắn</a>
         </div>
+        <% end %>
         <% end %>
       </div>
     </div>
@@ -110,7 +112,8 @@
           <span><%= @post.desc %></span>
           </br>
           <span class="timestamp">        
-          Thời gian đăng <%= time_ago_in_words(@post.created_at) %> trước.
+          
+          Ngày đăng <%= @post.created_at.strftime("%m/%d/%Y %I:%M ") %> 
           </span>
           </br>
           <%= @post.thumbs_up_total %>   
@@ -139,6 +142,7 @@
         </div>
       </div>
       <%= render 'reviews/review' %>
+      <% if logged_in? %>
       <div id="comment">
         <%= form_for([@post, @post.reviews.build]) do |f| %>
         <p style="height: 110px;">
@@ -146,10 +150,11 @@
           <%= f.text_area :review, id: 'textarea_review'%>
         </p>
         <p>
-          <%= f.submit "Create review", id: "botton", class: "btn btn-success green" %>
+          <%= f.submit "Bình luận", id: "botton", class: "btn btn-success green" %>
         </p>
         <% end %>
       </div>
+      <% end %>
       <div class="col-md-12">
         <br>
         <strong>Địa chỉ</strong>

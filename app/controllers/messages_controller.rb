@@ -11,10 +11,9 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     # binding.pry
     if (@message.save)
-      flash[:success] = "A message has been sent to " + receiver.name
       redirect_to :back
     else
-      flash[:warning] = "Invalid input, please try again!"
+      flash[:warning] = "Vui lòng soạn tin nhắn"
       @all_error_messages = @message.errors
       redirect_to :back
     end

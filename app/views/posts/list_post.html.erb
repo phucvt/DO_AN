@@ -4,6 +4,7 @@
     <ul class="nav nav-pills nav-stacked">
       <li><%= link_to 'Bài đăng', list_post_path %></li>
       <li><%= link_to 'Tài khoản', users_path %></li>
+      <li><%= link_to 'Khu vực', categories_path %></li>
     </ul>
   </div>
   <div class="col col-md-10">
@@ -21,19 +22,21 @@
             </div>
             <div class="col-md-4">
               <span class="timestamp">        
-                Đăng <%= time_ago_in_words(post.created_at) %> trước.
+                <%= post.created_at.strftime("%m/%d/%Y %I:%M ") %>
               </span>
             </div>
             <div class="col-md-3">
+              <% if current_user.admin? %>
+                <% post.approve = true %>
+              <% end %>
                 <% if post.approve == false %>
-                  <%= link_to "Pending", approve_path(post_id:post) %>
+                  <%= link_to "Đang chờ phê duyệt", approve_path(post_id:post) %>
                 <% else %>
-                  <span>Approved</span>
+                  <span>Đã phê duyệt</span>
                 <% end %>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <%= link_to new_post_path do %>
                 <span class='glyphicon glyphicon-plus'></span><% end %>&nbsp;&nbsp;&nbsp;&nbsp;
-                <%= link_to edit_post_path(post) do %><span class='glyphicon glyphicon-pencil'></span><% end %>&nbsp;&nbsp;&nbsp;&nbsp;
                 <%= link_to post_path(post), method: :delete, data: { confirm: 'Bạn có muốn xóa?'} do %><span class='glyphicon glyphicon-remove'></span><% end %>
             </div>
           </div> 

@@ -18,7 +18,7 @@
             <h4><%= link_to post.title, post %>
             </h4>
             <span class="timestamp">        
-            Đăng <%= time_ago_in_words(post.created_at) %> trước.
+            Ngày đăng <%= post.created_at.strftime("%m/%d/%Y %I:%M") %>
             </span>
           </div>
           <div class="ratings">

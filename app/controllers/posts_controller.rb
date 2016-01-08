@@ -37,17 +37,19 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
-    @users = @post.likes.all
-    like_checking = Like.find_by(user: current_user, post: @post)
-    if like_checking
-      if like_checking.like == true
-        @like_post = 1
+    if logged_in?
+      @users = @post.likes.all
+      like_checking = Like.find_by(user: current_user, post: @post)
+      if like_checking
+        if like_checking.like == true
+          @like_post = 1
+        else
+          @like_post = -1
+        end
       else
-        @like_post = -1
+        @like_post = 0
       end
-    else
-      @like_post = 0
-    end
+    end 
   end
 
   def like
@@ -83,8 +85,12 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    # @post = Post.new(post_params)
+    @post = Post.new(post_params)
+
     @post = current_user.posts.build(post_params)
+    if current_user.admin?
+      @post.approve = true
+    end
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post }

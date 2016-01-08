@@ -22,15 +22,15 @@
   <strong>Khu vực</strong>
   <%= f.collection_select(:location_id, @locations, :id, :location_name, :include_blank => "Khu vực") %>
   <strong>Tiêu đề</strong>
-  <%= f.text_field :title, class: "form-control", placeholder: "input title"  %>
+  <%= f.text_field :title, class: "form-control", placeholder: "tiêu đề"  %>
   <strong>Diện tích</strong>
-  <%= f.text_field :area, class: "form-control", placeholder: "input area"  %>
+  <%= f.text_field :area, class: "form-control", placeholder: "diện tích"  %>
   <strong>Giá cả</strong>
-  <%= f.text_field :price, class: "form-control", placeholder: "input address"  %>
+  <%= f.text_field :price, class: "form-control", placeholder: "giá cả"  %>
   <strong>Địa chỉ</strong>
-  <%= f.text_field :address, class: "form-control", placeholder: "input address"  %>
+  <%= f.text_field :address, class: "form-control", placeholder: "dịa chỉ"  %>
   <strong>Mô tả</strong>
-  <%= f.text_field :desc, class: "form-control", placeholder: "input descript"  %>
+  <%= f.text_field :desc, class: "form-control", placeholder: "mô tả"  %>
   <span class="picture">
   <%= f.file_field :picture, class: "picture", accept: 'image/jpeg,image/gif,image/png' %>
   </span>

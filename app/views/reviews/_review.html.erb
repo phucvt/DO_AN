@@ -18,7 +18,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <strong><%= User.find_by_id(review.user_id).name %></strong>
-        <span class="text-muted">bình luận <%= time_ago_in_words(review.created_at) %> trước.</span>
+        <span class="text-muted">bình luận <%= review.created_at.strftime("%m/%d/%Y %I:%M ") %></span>
       </div>
       <div class="panel-body">
         <%= review.review %>
